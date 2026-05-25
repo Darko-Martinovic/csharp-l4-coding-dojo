@@ -22,11 +22,20 @@ public sealed class Task24_Events : ICodingTask
         using System;
 
         class Counter {
-            public Action<int>? Changed;          // assignable & callable externally
+            public Action<int> Changed;          // assignable & callable externally
             private int _value;
             public void Increment() {
                 _value++;
                 if (Changed != null) Changed(_value);   // race between check & call
+            }
+        }
+
+        public class Program {
+            public static void Main() {
+                var c = new Counter();
+                c.Changed += v => Console.WriteLine($"now {v}");
+                c.Increment();   // now 1
+                c.Increment();   // now 2
             }
         }
         """;

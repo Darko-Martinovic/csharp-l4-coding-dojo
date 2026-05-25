@@ -23,8 +23,16 @@ public sealed class Task22_ConversionOperators : ICodingTask
             public Celsius(double d) { Degrees = d; }
         }
 
-        Celsius c = 25;                 // want this to just work
-        Fahrenheit f = (Fahrenheit)c;   // want an explicit cast here
+        struct Fahrenheit {
+            public double Degrees;
+        }
+
+        public class Program {
+            public static void Main() {
+                Celsius c = 25;                 // CS0029: no implicit conversion yet
+                Fahrenheit f = (Fahrenheit)c;   // CS0030: no explicit cast defined yet
+            }
+        }
         """;
 
     public string SolutionExplanation => """

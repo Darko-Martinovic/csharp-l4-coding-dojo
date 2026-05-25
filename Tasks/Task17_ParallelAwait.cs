@@ -22,11 +22,23 @@ public sealed class Task17_ParallelAwait : ICodingTask
         using System.Collections.Generic;
         using System.Threading.Tasks;
 
-        async Task<int[]> FetchAll(int[] ids) {
-            var results = new List<int>();
-            foreach (var id in ids)
-                results.Add(await FetchAsync(id));   // serialized!
-            return results.ToArray();
+        public class Program {
+            static async Task<int> FetchAsync(int id) {
+                await Task.Delay(100);
+                return id * id;
+            }
+
+            static async Task<int[]> FetchAll(int[] ids) {
+                var results = new List<int>();
+                foreach (var id in ids)
+                    results.Add(await FetchAsync(id));   // serialized!
+                return results.ToArray();
+            }
+
+            public static async Task Main() {
+                var r = await FetchAll(new[] { 1, 2, 3, 4, 5 });
+                Console.WriteLine(string.Join(",", r));  // ~500ms because it ran one-at-a-time
+            }
         }
         """;
 

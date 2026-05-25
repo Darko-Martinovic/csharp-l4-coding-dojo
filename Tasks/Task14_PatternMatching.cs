@@ -20,17 +20,27 @@ public sealed class Task14_PatternMatching : ICodingTask
     public string StarterCode => """
         using System;
 
-        string Describe(int t) {
-            if (t < 0) return "freezing";
-            else if (t >= 0 && t < 15) return "cold";
-            else if (t >= 15 && t < 25) return "mild";
-            else return "hot";
-        }
+        class Circle { public double Radius; }
+        class Rectangle { public double W, H; }
 
-        double Area(object shape) {
-            if (shape is Circle c) return Math.PI * c.Radius * c.Radius;
-            if (shape is Rectangle r) return r.W * r.H;
-            throw new ArgumentException("unknown shape");
+        public class Program {
+            static string Describe(int t) {
+                if (t < 0) return "freezing";
+                else if (t >= 0 && t < 15) return "cold";
+                else if (t >= 15 && t < 25) return "mild";
+                else return "hot";
+            }
+
+            static double Area(object shape) {
+                if (shape is Circle c) return Math.PI * c.Radius * c.Radius;
+                if (shape is Rectangle r) return r.W * r.H;
+                throw new ArgumentException("unknown shape");
+            }
+
+            public static void Main() {
+                Console.WriteLine(Describe(20));                    // mild
+                Console.WriteLine(Area(new Circle { Radius = 2 })); // 12.57
+            }
         }
         """;
 

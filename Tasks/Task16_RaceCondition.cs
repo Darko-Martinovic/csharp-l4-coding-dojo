@@ -21,11 +21,15 @@ public sealed class Task16_RaceCondition : ICodingTask
         using System;
         using System.Threading.Tasks;
 
-        int count = 0;
-        Parallel.For(0, 100_000, _ => {
-            count++;                 // race: read, +1, write are separate steps
-        });
-        Console.WriteLine(count);    // < 100000, non-deterministic
+        public class Program {
+            public static void Main() {
+                int count = 0;
+                Parallel.For(0, 100_000, _ => {
+                    count++;                 // race: read, +1, write are separate steps
+                });
+                Console.WriteLine(count);    // < 100000, non-deterministic
+            }
+        }
         """;
 
     public string SolutionExplanation => """

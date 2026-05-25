@@ -26,9 +26,13 @@ public sealed class Task23_Indexer : ICodingTask
             public void Set(string name, string value) => _map[name] = value;
         }
 
-        var bag = new HeaderBag();
-        bag.Set("Content-Type", "text/plain");
-        Console.WriteLine(bag.Get("content-type"));   // KeyNotFoundException
+        public class Program {
+            public static void Main() {
+                var bag = new HeaderBag();
+                bag.Set("Content-Type", "text/plain");
+                Console.WriteLine(bag.Get("content-type"));   // KeyNotFoundException
+            }
+        }
         """;
 
     public string SolutionExplanation => """

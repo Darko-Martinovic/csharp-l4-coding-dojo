@@ -24,8 +24,15 @@ public sealed class Task20_ComparableComparer : ICodingTask
             public int Age;
         }
 
-        var people = new List<Person> { /* ... */ };
-        people.Sort();   // InvalidOperationException: no IComparable
+        public class Program {
+            public static void Main() {
+                var people = new List<Person> {
+                    new Person { Name = "Alice", Age = 30 },
+                    new Person { Name = "Bob", Age = 40 },
+                };
+                people.Sort();   // InvalidOperationException: no IComparable
+            }
+        }
         """;
 
     public string SolutionExplanation => """

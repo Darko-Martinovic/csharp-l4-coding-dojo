@@ -19,13 +19,25 @@ public sealed class Task26_GroupByAggregate : ICodingTask
         using System;
         using System.Collections.Generic;
 
-        var totals = new Dictionary<string, decimal>();
-        foreach (var o in orders) {
-            if (!totals.ContainsKey(o.Category))
-                totals[o.Category] = 0;
-            totals[o.Category] += o.Amount;
+        record Order(string Category, decimal Amount);
+
+        public class Program {
+            public static void Main() {
+                var orders = new List<Order> {
+                    new("Books", 12m), new("Toys", 30m), new("Books", 8m),
+                };
+
+                var totals = new Dictionary<string, decimal>();
+                foreach (var o in orders) {
+                    if (!totals.ContainsKey(o.Category))
+                        totals[o.Category] = 0;
+                    totals[o.Category] += o.Amount;
+                }
+                // ...then sort the dictionary by value somehow...
+                foreach (var t in totals)
+                    Console.WriteLine($"{t.Key}: {t.Value}");
+            }
         }
-        // ...then sort the dictionary by value somehow...
         """;
 
     public string SolutionExplanation => """

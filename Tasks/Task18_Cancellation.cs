@@ -20,11 +20,20 @@ public sealed class Task18_Cancellation : ICodingTask
         using System.Collections.Generic;
         using System.Threading.Tasks;
 
-        async Task ProcessAll(IEnumerable<int> items) {
-            foreach (var item in items) {
-                await Task.Delay(50);    // some work
-                Handle(item);
-            }                            // no way to cancel
+        public class Program {
+            static void Handle(int item) { /* process one item */ }
+
+            static async Task ProcessAll(IEnumerable<int> items) {
+                foreach (var item in items) {
+                    await Task.Delay(50);    // some work
+                    Handle(item);
+                }                            // no way to cancel
+            }
+
+            public static async Task Main() {
+                await ProcessAll(new[] { 1, 2, 3 });
+                Console.WriteLine("done - but there was no way to cancel");
+            }
         }
         """;
 

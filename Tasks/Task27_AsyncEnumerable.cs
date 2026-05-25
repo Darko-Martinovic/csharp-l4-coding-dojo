@@ -20,13 +20,21 @@ public sealed class Task27_AsyncEnumerable : ICodingTask
         using System.Collections.Generic;
         using System.Threading.Tasks;
 
-        async Task<List<int>> GetPages() {        // buffers everything
-            var all = new List<int>();
-            for (int p = 1; p <= 3; p++) {
-                await Task.Delay(50);             // fetch page p
-                all.Add(p);
+        public class Program {
+            static async Task<List<int>> GetPages() {        // buffers everything
+                var all = new List<int>();
+                for (int p = 1; p <= 3; p++) {
+                    await Task.Delay(50);             // fetch page p
+                    all.Add(p);
+                }
+                return all;                           // caller waits for ALL pages
             }
-            return all;                           // caller waits for ALL pages
+
+            public static async Task Main() {
+                var pages = await GetPages();
+                foreach (var p in pages)
+                    Console.WriteLine($"page {p}");
+            }
         }
         """;
 

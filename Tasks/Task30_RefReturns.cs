@@ -20,11 +20,16 @@ public sealed class Task30_RefReturns : ICodingTask
 
         struct Big { public long A, B, C, D; }
 
-        Big Find(Big[] data, int i) => data[i];   // returns a COPY
+        public class Program {
+            static Big Find(Big[] data, int i) => data[i];   // returns a COPY
 
-        var item = Find(arr, 0);
-        item.A = 99;              // edits the copy
-        Console.WriteLine(arr[0].A);   // still 0
+            public static void Main() {
+                var arr = new Big[3];
+                var item = Find(arr, 0);
+                item.A = 99;              // edits the copy
+                Console.WriteLine(arr[0].A);   // still 0
+            }
+        }
         """;
 
     public string SolutionExplanation => """

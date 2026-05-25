@@ -10,9 +10,9 @@ public sealed class Task07_MutableStruct : ICodingTask
 
     public string Description => """
         Counter is a mutable struct stored in a List. The code tries to bump
-        the first element in place, but `list[0].Increment()` is a compile
-        error (CS1612) — and even the workaround that compiles leaves the list
-        unchanged.
+        the first element in place, but `list[0].Value++` is a compile error
+        (CS1612) — and even `list[0].Increment()`, which does compile, leaves
+        the list unchanged.
 
         Explain the value-type semantics at play and provide a correct,
         idiomatic design.
@@ -27,15 +27,22 @@ public sealed class Task07_MutableStruct : ICodingTask
             public void Increment() => Value++;
         }
 
-        var list = new List<Counter> { new Counter() };
-        list[0].Increment();              // CS1612: modifying a temporary copy
-        Console.WriteLine(list[0].Value); // would still be 0 anyway
+        public class Program {
+            public static void Main() {
+                var list = new List<Counter> { new Counter() };
+                list[0].Value++;                  // CS1612: can't modify the return value (a copy)
+                // list[0].Increment();           // this WOULD compile, but silently mutates a copy
+                Console.WriteLine(list[0].Value);
+            }
+        }
         """;
 
     public string SolutionExplanation => """
         list[0] returns a *copy* of the struct (the indexer getter returns by
-        value). Calling Increment() on that throwaway copy can't change the
-        stored element, so the compiler blocks it outright.
+        value), and that copy is not a variable — so writing to its field,
+        `list[0].Value++`, is rejected with CS1612. Calling a mutating method
+        like `list[0].Increment()` does compile, but it changes the throwaway
+        copy and leaves the stored element untouched.
 
         The senior answer is to make value types immutable: expose operations
         that return a new value, then reassign. This makes the copy semantics

@@ -21,14 +21,26 @@ public sealed class Task19_CustomExceptionFilter : ICodingTask
     public string StarterCode => """
         using System;
 
-        try {
-            CallService();
+        class HttpRequestEx : Exception {
+            public int StatusCode { get; }
+            public HttpRequestEx(int statusCode) => StatusCode = statusCode;
         }
-        catch (Exception ex) {                 // catches everything
-            var http = ex as HttpRequestEx;
-            if (http is null || http.StatusCode != 429)
-                throw;                         // rethrow loses original site
-            Retry();
+
+        public class Program {
+            static void CallService() => throw new HttpRequestEx(429);
+            static void Retry() => Console.WriteLine("retrying...");
+
+            public static void Main() {
+                try {
+                    CallService();
+                }
+                catch (Exception ex) {                 // catches everything
+                    var http = ex as HttpRequestEx;
+                    if (http is null || http.StatusCode != 429)
+                        throw;                         // rethrow loses original site
+                    Retry();
+                }
+            }
         }
         """;
 

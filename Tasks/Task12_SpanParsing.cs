@@ -20,12 +20,18 @@ public sealed class Task12_SpanParsing : ICodingTask
     public string StarterCode => """
         using System;
 
-        int SumCsv(string csv) {
-            var parts = csv.Split(',');     // allocates array + N substrings
-            int sum = 0;
-            foreach (var p in parts)
-                sum += int.Parse(p);
-            return sum;
+        public class Program {
+            static int SumCsv(string csv) {
+                var parts = csv.Split(',');     // allocates array + N substrings
+                int sum = 0;
+                foreach (var p in parts)
+                    sum += int.Parse(p);
+                return sum;
+            }
+
+            public static void Main() {
+                Console.WriteLine(SumCsv("1,22,333,4"));   // 360
+            }
         }
         """;
 

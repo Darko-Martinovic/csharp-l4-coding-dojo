@@ -18,10 +18,15 @@ public sealed class Task29_ExpressionTrees : ICodingTask
     public string StarterCode => """
         using System;
 
-        bool Matches(Func<int, bool> predicate, int value)
-            => predicate(value);          // can only call it; can't see x > 5
+        public class Program {
+            static bool Matches(Func<int, bool> predicate, int value)
+                => predicate(value);          // can only call it; can't see x > 5
 
-        // We'd like to log "the rule was: x > 5" — impossible with Func.
+            public static void Main() {
+                // We'd like to log "the rule was: x > 5" - impossible with Func.
+                Console.WriteLine(Matches(x => x > 5, 10));   // True
+            }
+        }
         """;
 
     public string SolutionExplanation => """

@@ -24,13 +24,17 @@ public sealed class Task10_EqualsHashCode : ICodingTask
 
         class Point {
             public int X, Y;
-            public override bool Equals(object? o)
+            public override bool Equals(object o)
                 => o is Point p && p.X == X && p.Y == Y;
-            // GetHashCode NOT overridden  -> CS0659, and hashing is broken
+            // GetHashCode NOT overridden -> CS0659 warning, and hashing is broken
         }
 
-        var set = new HashSet<Point> { new() { X = 1, Y = 2 } };
-        Console.WriteLine(set.Contains(new() { X = 1, Y = 2 }));  // False
+        public class Program {
+            public static void Main() {
+                var set = new HashSet<Point> { new Point { X = 1, Y = 2 } };
+                Console.WriteLine(set.Contains(new Point { X = 1, Y = 2 }));  // False
+            }
+        }
         """;
 
     public string SolutionExplanation => """

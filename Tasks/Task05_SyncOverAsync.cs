@@ -20,6 +20,7 @@ public sealed class Task05_SyncOverAsync : ICodingTask
 
     public string StarterCode => """
         using System;
+        using System.Threading;
         using System.Threading.Tasks;
 
         public class Service {
@@ -31,6 +32,13 @@ public sealed class Task05_SyncOverAsync : ICodingTask
             private async Task<string> GetAsync() {
                 await Task.Delay(10);
                 return "payload";
+            }
+        }
+
+        public class Program {
+            public static void Main() {
+                new Service().Run();
+                Thread.Sleep(100);   // async void can't be awaited; wait for the demo
             }
         }
         """;

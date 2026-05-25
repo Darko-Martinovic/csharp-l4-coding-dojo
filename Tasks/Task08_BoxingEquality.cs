@@ -17,11 +17,15 @@ public sealed class Task08_BoxingEquality : ICodingTask
     public string StarterCode => """
         using System;
 
-        object a = 5;
-        object b = 5;
+        public class Program {
+            public static void Main() {
+                object a = 5;
+                object b = 5;
 
-        Console.WriteLine(a == b);        // False  (?!)
-        Console.WriteLine(a.Equals(b));   // True
+                Console.WriteLine(a == b);        // False  (?!)
+                Console.WriteLine(a.Equals(b));   // True
+            }
+        }
         """;
 
     public string SolutionExplanation => """

@@ -40,6 +40,20 @@ public sealed class Task02_DisposePattern : ICodingTask
 
             public void DoSomething() { }              // bug: no disposed check
         }
+
+        static class Helper {
+            public static void DeallocateBuffer(IntPtr buffer) { /* free native memory */ }
+        }
+
+        public class Program {
+            public static void Main() {
+                var c = new MyClass();
+                c.DoSomething();
+                c.Dispose();
+                c.Dispose();   // double-dispose: should be a safe no-op
+                Console.WriteLine("disposed");
+            }
+        }
         """;
 
     public string SolutionExplanation => """

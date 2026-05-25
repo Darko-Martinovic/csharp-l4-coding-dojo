@@ -20,11 +20,15 @@ public sealed class Task04_ClosureCapture : ICodingTask
         using System;
         using System.Collections.Generic;
 
-        var actions = new List<Action>();
-        for (int i = 0; i < 3; i++)
-            actions.Add(() => Console.Write(i + " "));
+        public class Program {
+            public static void Main() {
+                var actions = new List<Action>();
+                for (int i = 0; i < 3; i++)
+                    actions.Add(() => Console.Write(i + " "));
 
-        foreach (var a in actions) a();   // prints "3 3 3"
+                foreach (var a in actions) a();   // prints "3 3 3", expected "0 1 2"
+            }
+        }
         """;
 
     public string SolutionExplanation => """

@@ -23,11 +23,15 @@ public sealed class Task21_OperatorOverloading : ICodingTask
             public Vector2(double x, double y) { X = x; Y = y; }
         }
 
-        var a = new Vector2(1, 2);
-        var b = new Vector2(3, 4);
-        var sum = a + b;        // CS0019: operator '+' not defined
-        var scaled = a * 2;     // CS0019
-        bool eq = a == b;       // CS0019
+        public class Program {
+            public static void Main() {
+                var a = new Vector2(1, 2);
+                var b = new Vector2(3, 4);
+                var sum = a + b;        // CS0019: operator '+' not defined
+                var scaled = a * 2;     // CS0019
+                bool eq = a == b;       // CS0019
+            }
+        }
         """;
 
     public string SolutionExplanation => """

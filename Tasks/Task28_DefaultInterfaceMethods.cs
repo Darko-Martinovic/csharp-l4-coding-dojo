@@ -20,12 +20,19 @@ public sealed class Task28_DefaultInterfaceMethods : ICodingTask
 
         interface ILogger {
             void Log(string message);
-            void LogError(string message);   // <-- adding this breaks every
-        }                                    //     class that already implements ILogger
+            void LogError(string message);   // adding this breaks every implementer
+        }
 
         class ConsoleLogger : ILogger {
             public void Log(string m) => Console.WriteLine(m);
             // CS0535: does not implement 'ILogger.LogError'
+        }
+
+        public class Program {
+            public static void Main() {
+                ILogger logger = new ConsoleLogger();
+                logger.Log("starting up");
+            }
         }
         """;
 

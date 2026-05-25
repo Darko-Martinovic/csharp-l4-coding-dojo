@@ -22,15 +22,21 @@ public sealed class Task09_MultipleEnumeration : ICodingTask
         using System.Collections.Generic;
         using System.Linq;
 
-        void Process(IEnumerable<int> items) {
-            Console.WriteLine($"count = {items.Count()}");  // enumeration #1
-            foreach (var i in items) Use(i);               // enumeration #2
-        }
+        public class Program {
+            static void Use(int i) { /* pretend to do work */ }
 
-        int calls = 0;
-        var query = Enumerable.Range(1, 3).Select(x => { calls++; return x; });
-        Process(query);
-        Console.WriteLine(calls);   // 6, expected 3
+            static void Process(IEnumerable<int> items) {
+                Console.WriteLine($"count = {items.Count()}");  // enumeration #1
+                foreach (var i in items) Use(i);                // enumeration #2
+            }
+
+            public static void Main() {
+                int calls = 0;
+                var query = Enumerable.Range(1, 3).Select(x => { calls++; return x; });
+                Process(query);
+                Console.WriteLine(calls);   // 6, expected 3
+            }
+        }
         """;
 
     public string SolutionExplanation => """

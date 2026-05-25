@@ -26,13 +26,17 @@ public sealed class Task13_RecordsWith : ICodingTask
             public Money(decimal a, string c) { Amount = a; Currency = c; }
         }
 
-        var a = new Money(10, "USD");
-        var b = new Money(10, "USD");
-        Console.WriteLine(a == b);     // False (reference equality)
+        public class Program {
+            public static void Main() {
+                var a = new Money(10, "USD");
+                var b = new Money(10, "USD");
+                Console.WriteLine(a == b);     // False (reference equality)
 
-        var c = a;                     // same reference
-        c.Amount = 20;                 // also changes a!
-        Console.WriteLine(a.Amount);   // 20
+                var c = a;                     // same reference
+                c.Amount = 20;                 // also changes a!
+                Console.WriteLine(a.Amount);   // 20
+            }
+        }
         """;
 
     public string SolutionExplanation => """

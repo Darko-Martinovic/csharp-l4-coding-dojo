@@ -23,11 +23,22 @@ public sealed class Task11_InterfaceVariance : ICodingTask
         interface IProducer<T> { T Produce(); }          // only returns T
         interface IConsumer<T> { void Consume(T item); } // only accepts T
 
-        IProducer<string> sp = new StringProducer();
-        IProducer<object> op = sp;   // CS0266 without variance
+        class StringProducer : IProducer<string> {
+            public string Produce() => "hello";
+        }
+        class ObjectConsumer : IConsumer<object> {
+            public void Consume(object item) => Console.WriteLine(item);
+        }
 
-        IConsumer<object> oc = new ObjectConsumer();
-        IConsumer<string> sc = oc;   // CS0266 without variance
+        public class Program {
+            public static void Main() {
+                IProducer<string> sp = new StringProducer();
+                IProducer<object> op = sp;   // CS0266 without variance
+
+                IConsumer<object> oc = new ObjectConsumer();
+                IConsumer<string> sc = oc;   // CS0266 without variance
+            }
+        }
         """;
 
     public string SolutionExplanation => """

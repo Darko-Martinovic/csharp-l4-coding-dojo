@@ -21,13 +21,17 @@ public sealed class Task15_NullableReferences : ICodingTask
         using System;
         using System.Collections.Generic;
 
-        Dictionary<int, string> _names = new() { [1] = "Ada" };
+        public class Program {
+            static Dictionary<int, string> _names = new() { [1] = "Ada" };
 
-        string FindName(int id)                       // says: never null
-            => _names.GetValueOrDefault(id);          // but returns null!
+            static string FindName(int id)                // says: never null
+                => _names.GetValueOrDefault(id);          // but returns null!
 
-        var name = FindName(99);
-        Console.WriteLine(name.ToUpper());            // NullReferenceException
+            public static void Main() {
+                var name = FindName(99);
+                Console.WriteLine(name.ToUpper());         // NullReferenceException
+            }
+        }
         """;
 
     public string SolutionExplanation => """

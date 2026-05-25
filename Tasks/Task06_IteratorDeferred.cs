@@ -22,16 +22,20 @@ public sealed class Task06_IteratorDeferred : ICodingTask
         using System;
         using System.Collections.Generic;
 
-        IEnumerable<int> Squares(IEnumerable<int> src) {
-            if (src is null)                       // deferred: body doesn't run
-                throw new ArgumentNullException(nameof(src));   // until MoveNext
-            foreach (var x in src)
-                yield return x * x;
-        }
+        public class Program {
+            static IEnumerable<int> Squares(IEnumerable<int> src) {
+                if (src is null)                       // deferred: body doesn't run
+                    throw new ArgumentNullException(nameof(src));   // until MoveNext
+                foreach (var x in src)
+                    yield return x * x;
+            }
 
-        var q = Squares(null);          // does NOT throw here
-        Console.WriteLine("created");   // this prints
-        foreach (var s in q) { }        // throws only here
+            public static void Main() {
+                var q = Squares(null);          // does NOT throw here
+                Console.WriteLine("created");   // this prints
+                foreach (var sq in q) { }       // throws only here
+            }
+        }
         """;
 
     public string SolutionExplanation => """

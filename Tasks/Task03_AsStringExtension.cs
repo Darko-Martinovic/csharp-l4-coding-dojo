@@ -28,12 +28,21 @@ public sealed class Task03_AsStringExtension : ICodingTask
         using System.Collections.Generic;
 
         public static class EnumExtensions {
-            // TODO: AsString<T>(this IEnumerable<T> items, string separator)
-            //       -> join via item.ToString()
+            // TODO: join via item.ToString()
+            public static string AsString<T>(this IEnumerable<T> items, string separator)
+                => throw new NotImplementedException();
 
-            // TODO: AsString<T>(this IEnumerable<T> items,
-            //                   Func<T,string> selector, string separator)
-            //       -> apply selector, then join
+            // TODO: apply selector, then join
+            public static string AsString<T>(this IEnumerable<T> items, Func<T, string> selector, string separator)
+                => throw new NotImplementedException();
+        }
+
+        public class Program {
+            public static void Main() {
+                var ints = new List<int> { 1, 2, 3, 4, 5 };
+                Console.WriteLine(ints.AsString(", "));                 // expected: 1, 2, 3, 4, 5
+                Console.WriteLine(ints.AsString(x => $"[{x}]", " | ")); // expected: [1] | [2] | ...
+            }
         }
         """;
 
