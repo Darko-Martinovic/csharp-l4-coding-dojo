@@ -18,6 +18,9 @@ public sealed class Task15_NullableReferences : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Collections.Generic;
+
         Dictionary<int, string> _names = new() { [1] = "Ada" };
 
         string FindName(int id)                       // says: never null

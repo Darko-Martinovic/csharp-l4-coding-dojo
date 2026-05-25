@@ -15,6 +15,8 @@ public sealed class Task08_BoxingEquality : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         object a = 5;
         object b = 5;
 

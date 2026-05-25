@@ -17,6 +17,10 @@ public sealed class Task02_DisposePattern : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.IO;
+        using System.Runtime.InteropServices;
+
         class MyClass : IDisposable {
             private IntPtr _nativeBuffer;
             private SafeHandle _handle;

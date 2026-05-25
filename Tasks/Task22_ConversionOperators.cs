@@ -16,6 +16,8 @@ public sealed class Task22_ConversionOperators : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         struct Celsius {
             public double Degrees;
             public Celsius(double d) { Degrees = d; }

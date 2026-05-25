@@ -16,6 +16,8 @@ public sealed class Task29_ExpressionTrees : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         bool Matches(Func<int, bool> predicate, int value)
             => predicate(value);          // can only call it; can't see x > 5
 

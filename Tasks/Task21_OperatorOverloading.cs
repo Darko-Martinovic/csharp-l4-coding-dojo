@@ -16,6 +16,8 @@ public sealed class Task21_OperatorOverloading : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         struct Vector2 {
             public double X, Y;
             public Vector2(double x, double y) { X = x; Y = y; }

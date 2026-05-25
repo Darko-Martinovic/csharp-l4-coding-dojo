@@ -16,6 +16,8 @@ public sealed class Task25_GenericConstraints : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         T Max<T>(T a, T b) {
             return a > b ? a : b;   // CS0019: '>' cannot be applied to 'T'
         }

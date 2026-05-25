@@ -16,6 +16,8 @@ public sealed class Task28_DefaultInterfaceMethods : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         interface ILogger {
             void Log(string message);
             void LogError(string message);   // <-- adding this breaks every

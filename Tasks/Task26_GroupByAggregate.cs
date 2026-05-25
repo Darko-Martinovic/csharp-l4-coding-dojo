@@ -16,6 +16,9 @@ public sealed class Task26_GroupByAggregate : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Collections.Generic;
+
         var totals = new Dictionary<string, decimal>();
         foreach (var o in orders) {
             if (!totals.ContainsKey(o.Category))

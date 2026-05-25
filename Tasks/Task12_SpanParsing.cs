@@ -18,6 +18,8 @@ public sealed class Task12_SpanParsing : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         int SumCsv(string csv) {
             var parts = csv.Split(',');     // allocates array + N substrings
             int sum = 0;

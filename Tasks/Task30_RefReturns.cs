@@ -16,6 +16,8 @@ public sealed class Task30_RefReturns : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         struct Big { public long A, B, C, D; }
 
         Big Find(Big[] data, int i) => data[i];   // returns a COPY

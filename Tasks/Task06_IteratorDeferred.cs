@@ -19,6 +19,9 @@ public sealed class Task06_IteratorDeferred : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Collections.Generic;
+
         IEnumerable<int> Squares(IEnumerable<int> src) {
             if (src is null)                       // deferred: body doesn't run
                 throw new ArgumentNullException(nameof(src));   // until MoveNext

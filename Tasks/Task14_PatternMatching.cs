@@ -18,6 +18,8 @@ public sealed class Task14_PatternMatching : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         string Describe(int t) {
             if (t < 0) return "freezing";
             else if (t >= 0 && t < 15) return "cold";

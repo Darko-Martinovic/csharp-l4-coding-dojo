@@ -18,6 +18,8 @@ public sealed class Task13_RecordsWith : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         class Money {
             public decimal Amount;
             public string Currency;

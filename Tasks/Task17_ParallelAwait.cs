@@ -18,6 +18,10 @@ public sealed class Task17_ParallelAwait : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Collections.Generic;
+        using System.Threading.Tasks;
+
         async Task<int[]> FetchAll(int[] ids) {
             var results = new List<int>();
             foreach (var id in ids)

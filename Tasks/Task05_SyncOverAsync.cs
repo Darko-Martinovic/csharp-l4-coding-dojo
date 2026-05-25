@@ -19,6 +19,9 @@ public sealed class Task05_SyncOverAsync : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Threading.Tasks;
+
         public class Service {
             public async void Run() {                 // bug: async void
                 var data = GetAsync().Result;         // bug: blocks -> deadlock risk

@@ -16,6 +16,9 @@ public sealed class Task20_ComparableComparer : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Collections.Generic;
+
         class Person {
             public string Name = "";
             public int Age;

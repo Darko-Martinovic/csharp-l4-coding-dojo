@@ -19,6 +19,8 @@ public sealed class Task19_CustomExceptionFilter : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         try {
             CallService();
         }

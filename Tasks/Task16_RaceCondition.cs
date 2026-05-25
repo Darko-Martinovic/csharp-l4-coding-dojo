@@ -18,6 +18,9 @@ public sealed class Task16_RaceCondition : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Threading.Tasks;
+
         int count = 0;
         Parallel.For(0, 100_000, _ => {
             count++;                 // race: read, +1, write are separate steps

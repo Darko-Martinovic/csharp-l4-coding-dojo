@@ -18,6 +18,8 @@ public sealed class Task01_GenericDelegateVariance : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         class MyClass {
           public override string ToString() => "I am MyClass";
         }

@@ -18,6 +18,10 @@ public sealed class Task09_MultipleEnumeration : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Collections.Generic;
+        using System.Linq;
+
         void Process(IEnumerable<int> items) {
             Console.WriteLine($"count = {items.Count()}");  // enumeration #1
             foreach (var i in items) Use(i);               // enumeration #2

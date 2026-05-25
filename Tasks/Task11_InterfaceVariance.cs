@@ -18,6 +18,8 @@ public sealed class Task11_InterfaceVariance : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         interface IProducer<T> { T Produce(); }          // only returns T
         interface IConsumer<T> { void Consume(T item); } // only accepts T
 

@@ -19,6 +19,9 @@ public sealed class Task07_MutableStruct : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Collections.Generic;
+
         struct Counter {
             public int Value;
             public void Increment() => Value++;

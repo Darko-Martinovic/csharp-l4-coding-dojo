@@ -19,6 +19,8 @@ public sealed class Task24_Events : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+
         class Counter {
             public Action<int>? Changed;          // assignable & callable externally
             private int _value;

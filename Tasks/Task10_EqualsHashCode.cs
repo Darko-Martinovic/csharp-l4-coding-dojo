@@ -19,6 +19,9 @@ public sealed class Task10_EqualsHashCode : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Collections.Generic;
+
         class Point {
             public int X, Y;
             public override bool Equals(object? o)

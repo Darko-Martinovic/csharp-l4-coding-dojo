@@ -17,6 +17,9 @@ public sealed class Task04_ClosureCapture : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Collections.Generic;
+
         var actions = new List<Action>();
         for (int i = 0; i < 3; i++)
             actions.Add(() => Console.Write(i + " "));

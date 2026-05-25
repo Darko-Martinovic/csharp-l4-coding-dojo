@@ -17,6 +17,9 @@ public sealed class Task23_Indexer : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Collections.Generic;
+
         class HeaderBag {
             private readonly Dictionary<string, string> _map = new();
             public string Get(string name) => _map[name];   // throws if absent

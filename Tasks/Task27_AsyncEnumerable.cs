@@ -16,6 +16,10 @@ public sealed class Task27_AsyncEnumerable : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Collections.Generic;
+        using System.Threading.Tasks;
+
         async Task<List<int>> GetPages() {        // buffers everything
             var all = new List<int>();
             for (int p = 1; p <= 3; p++) {

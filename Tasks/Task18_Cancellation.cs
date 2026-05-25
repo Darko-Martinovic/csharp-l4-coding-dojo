@@ -16,6 +16,10 @@ public sealed class Task18_Cancellation : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Collections.Generic;
+        using System.Threading.Tasks;
+
         async Task ProcessAll(IEnumerable<int> items) {
             foreach (var item in items) {
                 await Task.Delay(50);    // some work

@@ -24,6 +24,9 @@ public sealed class Task03_AsStringExtension : ICodingTask
         """;
 
     public string StarterCode => """
+        using System;
+        using System.Collections.Generic;
+
         public static class EnumExtensions {
             // TODO: AsString<T>(this IEnumerable<T> items, string separator)
             //       -> join via item.ToString()
